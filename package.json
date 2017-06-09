@@ -1,0 +1,25 @@
+{
+    "name": "todoapp-express",
+    "version": "1.0.0",
+    "description": "Using node and express to make a simple todo app, with features such as personalize todo list for users, log-in function etc.",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zmrram/ToDo-Express.git"
+    },
+    "keywords": [
+        "todo"
+    ],
+    "author": "Tin Huynh",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/zmrram/ToDo-Express/issues"
+    },
+    "homepage": "https://github.com/zmrram/ToDo-Express#readme",
+    "dependencies": {
+        "express": "^4.15.3"
+    }
+}
