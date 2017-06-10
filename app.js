@@ -1,11 +1,16 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
+
+//init local mongo database
+var mongodb = require('./config/mongodb');
+mongoose.connect(mongodb.database);
 
 //init app
 var app = express();
