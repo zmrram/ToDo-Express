@@ -27,8 +27,14 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
-    console.log(req.body);
-    res.redirect('/');
+    req.checkBody('username', 'Username is required').notEmpty();
+    req.checkBody('password', 'Password is required').notEmpty();
+    var errors = req.validationErrors();
+    if (errors) {
+        res.render('login', { errors: errors });
+    } else {
+        console.log(req.body);
+    }
 });
 
 module.exports = router;
