@@ -13,4 +13,11 @@ router.post('/', function(req, res) {
     res.redirect('/todo');
 });
 
+router.delete('/:item', function(req, res) {
+    list = list.filter(function(todo) {
+        return todo.item.replace(/ /g, '-') !== req.params.item;
+    });
+    res.json(list);
+});
+
 module.exports = router;

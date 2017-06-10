@@ -4,6 +4,7 @@
 <head>
     <title>Register</title>
     <% include partials/links %>
+    <script src = "/js/todo.js"></script>
 </head>
 <body>
     <div class="container">
@@ -26,7 +27,10 @@
                             </thead>
                             <tbody>
                                 <% list.forEach(function(item){ %>
-                                    <tr><th><%= item.item %></th></tr> 
+                                    <tr>
+                                        <th><%= item.item %></th>
+                                        <th><button class="btn btn-success" name="clear">Clear</button></th>
+                                    </tr> 
                                 <% }) %>    
                             </tbody>
                         </table>
