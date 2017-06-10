@@ -54,7 +54,8 @@ app.use(expressValidator({
 }));
 
 //Route files
-
+var index = require('./routes/index');
+app.use('/', index);
 
 //start server
 app.listen(3000, function() {
