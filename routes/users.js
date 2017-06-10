@@ -6,8 +6,20 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-    console.log(req.body);
-    res.redirect('/');
+    req.checkBody('name', 'Name is required').notEmpty();
+    req.checkBody('email', 'Email is required').notEmpty();
+    req.checkBody('email', 'Email is not valid').isEmail();
+    req.checkBody('username', 'Username is required').notEmpty();
+    req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+
+    var errors = req.validationErrors();
+    if (errors) {
+        res.render('register', { errors: errors });
+    } else {
+        req.flash('success_msg', 'Account Registered!');
+        res.redirect('/users/login');
+    }
 });
 
 router.get('/login', function(req, res) {
