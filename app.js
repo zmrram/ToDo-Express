@@ -55,7 +55,9 @@ app.use(expressValidator({
 
 //Route files
 var index = require('./routes/index');
+var users = require('./routes/users');
 app.use('/', index);
+app.use('/users', users)
 
 //start server
 app.listen(3000, function() {
