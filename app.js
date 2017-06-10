@@ -56,7 +56,10 @@ app.use(expressValidator({
 //Route files
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+//hompage route
 app.use('/', index);
+//users route
 app.use('/users', users)
 
 //start server
