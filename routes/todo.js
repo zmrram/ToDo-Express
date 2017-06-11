@@ -3,7 +3,7 @@ var router = express.Router();
 var UserList = require('../models/todo').UserList;
 var TodoList = require('../models/todo').TodoList;
 
-router.get('/', function(req, res) {
+router.get('/', ensureAuthenticated, function(req, res) {
     var query = {
         user_id: req.user._id
     };
@@ -83,4 +83,13 @@ router.delete('/:item', function(req, res) {
     });
 });
 
+// Access Control
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        req.flash('error_msg', 'Please login');
+        res.redirect('/users/login');
+    }
+}
 module.exports = router;

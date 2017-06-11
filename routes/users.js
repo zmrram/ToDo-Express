@@ -66,9 +66,19 @@ router.post('/login', function(req, res, next) {
 });
 
 // logout
-router.get('/logout', function(req, res) {
+router.get('/logout', ensureAuthenticated, function(req, res) {
     req.logout();
     req.flash('success_msg', 'You are logged out');
     res.redirect('/users/login');
 });
+
+// Access Control
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        req.flash('error_msg', 'Please login');
+        res.redirect('/users/login');
+    }
+}
 module.exports = router;
