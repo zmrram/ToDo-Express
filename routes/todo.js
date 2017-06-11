@@ -19,8 +19,6 @@ router.get('/', function(req, res) {
                 newUserList.save(function(err) {
                     if (err) {
                         console.log(err);
-                    } else {
-                        console.log(newUserList);
                     }
                 });
             }
