@@ -12,8 +12,8 @@ var userListSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    list: [todoList]
+    list: [todoSchema]
 });
 
-var UserList = module.exports = mongoose.model('UserList', userListSchema);
-var TodoList = module.exports = mongoose.model('TodoList', todoSchema);
+var UserList = module.exports.UserList = mongoose.model('UserList', userListSchema);
+var TodoList = module.exports.TodoList = mongoose.model('TodoList', todoSchema);

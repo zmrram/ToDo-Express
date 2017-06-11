@@ -11,6 +11,7 @@
         <% include partials/nav %>
             <div class="row">
                 <div class="col-lg-12">
+                    <% include partials/errormsgs %>
                     <h2 class="page-header">Todo List</h2>
                     <form method="post" action="/todo">
                         <div class="input-group">
@@ -26,12 +27,12 @@
                                 <tr><th>Things To Do</th></tr>       
                             </thead>
                             <tbody>
-                                <% list.forEach(function(item){ %>
+                                <% if (todolist) { todolist.list.forEach(function(item){ %>
                                     <tr>
                                         <th><%= item.item %></th>
                                         <th><button class="btn btn-success" name="clear">Clear</button></th>
                                     </tr> 
-                                <% }) %>    
+                                <% });} %>    
                             </tbody>
                         </table>
                     </div>
