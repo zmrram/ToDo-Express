@@ -60,10 +60,27 @@ router.post('/', function(req, res) {
 });
 
 router.delete('/:item', function(req, res) {
-    list = list.filter(function(todo) {
-        return todo.item.replace(/ /g, '-') !== req.params.item;
+    var query = {
+        user_id: req.user._id
+    };
+    UserList.findOne(query, function(err, todolist) {
+        if (err) {
+            console.log(err);
+        } else {
+            todolist.list = todolist.list.filter(function(todo) {
+                return todo.item.replace(/ /g, '-') !== req.params.item;
+            });
+            UserList.update(query, todolist, function(err) {
+                if (err) {
+                    console.log(err);
+                    return;
+                } else {
+                    req.flash('success_msg', 'One task down!!!');
+                    res.json(todolist.list);
+                }
+            });
+        }
     });
-    res.json(list);
 });
 
 module.exports = router;
