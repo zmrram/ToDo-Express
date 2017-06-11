@@ -73,13 +73,16 @@ app.use(expressValidator({
 var index = require('./routes/index');
 var users = require('./routes/users');
 var todo = require('./routes/todo');
-
-//hompage route
+var notfound = require('./routes/404')
+    //hompage route
 app.use('/', index);
 //users route
 app.use('/users', users);
 //todo route
 app.use('/todo', todo);
+//404
+app.use('*', notfound);
+
 //start server
 app.listen(3000, function() {
     console.log("Server started on port 3000...")
